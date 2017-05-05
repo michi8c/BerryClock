@@ -100,10 +100,13 @@ public class Clock extends javax.swing.JPanel implements Runnable, ComponentList
             public void run() {
                 labelClock.setVisible(false);
                 panelDrink.setVisible(true);
-                gui.blinkDisplay(500, 3);
+                if(isWorkHour())
+                    gui.blinkDisplay(500, 3);
+                else
+                    gui.dimmDisplay(0, 1);
             }
         };
-        this.timer.schedule(action, 1800000); //30min
+        this.timer.schedule(action, 3600000); //60min
     }
     
 
@@ -181,5 +184,12 @@ public class Clock extends javax.swing.JPanel implements Runnable, ComponentList
     @Override
     public void componentHidden(ComponentEvent e) {
         this.timer.cancel();
+    }
+    
+    private boolean isWorkHour() {
+        if(Integer.parseInt(sdf.format(date).split(":")[0]) < 7 || Integer.parseInt(sdf.format(date).split(":")[0]) > 17)
+            return false;
+        else
+            return true;
     }
 }

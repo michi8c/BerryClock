@@ -5,12 +5,6 @@
  */
 package berryclock;
 
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinDigitalInput;
-import com.pi4j.io.gpio.PinMode;
-import com.pi4j.io.gpio.PinPullResistance;
-import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import java.awt.Color;
@@ -58,6 +52,7 @@ public class Gui extends javax.swing.JFrame {
 //    private final GpioPinDigitalInput g20 = gpio.provisionDigitalInputPin(RaspiPin.GPIO_20, PinPullResistance.PULL_UP);
     
     public boolean isDisplayDimmed = false;
+    public boolean isWorkHour = true;
     
     private Clock clock;
     
